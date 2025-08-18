@@ -38,7 +38,7 @@ def play_game():
         #print("Secret word selected: " + secret_word)  # for testing, later remove this line
 
         if not guess.isalpha() or len(guess) != 1:
-            print("Please enter only one letters!")
+            print("Please enter only one letter!")
             continue
 
         if guess in guessed_letters:
