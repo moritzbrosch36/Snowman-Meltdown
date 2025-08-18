@@ -1,5 +1,6 @@
 import random
 from ascii_art import STAGES
+
 # List of secret words
 WORDS = ["python", "git", "github", "snowman", "meltdown"]
 
@@ -32,14 +33,12 @@ def play_game():
     while mistakes < max_mistakes:
         display_game_state(mistakes, secret_word, guessed_letters)
 
-        # TODO: Build your game loop here.
-        # For now, simply prompt the user once:
         guess = input("Guess a letter: ").lower()
 
-        print("Secret word selected: " + secret_word)  # for testing, later remove this line
+        #print("Secret word selected: " + secret_word)  # for testing, later remove this line
 
         if not guess.isalpha() or len(guess) != 1:
-            print("Please only letters!")
+            print("Please enter only one letters!")
             continue
 
         if guess in guessed_letters:
@@ -51,7 +50,6 @@ def play_game():
         if guess not in secret_word:
             mistakes += 1
 
-
         if all(letter in guessed_letters for letter in secret_word):
             display_game_state(mistakes, secret_word, guessed_letters)
             print("You win! The word was:", secret_word)
@@ -61,3 +59,11 @@ def play_game():
 
     display_game_state(mistakes, secret_word, guessed_letters)
     print("You lost! The word was:", secret_word)
+
+def main():
+    while True:
+        play_game()
+        again = input("\nWould you like to play again? (j/n): ").lower()
+        if again != "j":
+            print("Thanks for playing!")
+            break
