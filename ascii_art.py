@@ -1,4 +1,4 @@
-# Snowman ASCII Art stages
+"""ASCII art stages of the snowman, shown as it melts after mistakes."""
 STAGES = [
      # Stage 0: Full snowman
      """

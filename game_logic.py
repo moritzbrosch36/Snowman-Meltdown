@@ -6,11 +6,15 @@ WORDS = ["python", "git", "github", "snowman", "meltdown"]
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
-    """Display the mistakes"""
+    """
+    Display the current snowman stage, word progress
+    and guessed letters.
+    """
     print(STAGES[mistakes])
 
-    display_word = "".join([letter if letter in guessed_letters else "_"
-                            for letter in secret_word])
+    display_word = "".join(
+        [letter if letter in guessed_letters else "_" for letter in secret_word]
+    )
     print("Word: " + display_word)
     print("Mistakes: " + str(mistakes))
     print("Guessed letters:", " ".join(sorted(guessed_letters)))
@@ -18,11 +22,14 @@ def display_game_state(mistakes, secret_word, guessed_letters):
 
 
 def get_random_word():
-    """Selects a random word from the list."""
+    """Return a random secret word from the word list."""
     return WORDS[random.randint(0, len(WORDS) - 1)]
 
 
 def play_game():
+    """
+    Run a single round of the Snowman Meltdown game.
+    """
     secret_word = get_random_word()
     guessed_letters = set()
     mistakes = 0
@@ -34,8 +41,6 @@ def play_game():
         display_game_state(mistakes, secret_word, guessed_letters)
 
         guess = input("Guess a letter: ").lower()
-
-        #print("Secret word selected: " + secret_word)  # for testing, later remove this line
 
         if not guess.isalpha() or len(guess) != 1:
             print("Please enter only one letter!")
@@ -61,6 +66,9 @@ def play_game():
     print("You lost! The word was:", secret_word)
 
 def main():
+    """
+    Start the game loop and ask the player if they want to replay.
+    """
     while True:
         play_game()
         again = input("\nWould you like to play again? (j/n): ").lower()
